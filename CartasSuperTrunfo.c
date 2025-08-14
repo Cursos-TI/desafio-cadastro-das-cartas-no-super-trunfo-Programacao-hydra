@@ -138,9 +138,7 @@ int main(){
     //exibiçao de comparação usando os metodos ensinados ate agora!
 
     printf("******* COMPARAÇÃO DAS CARTAS *******\n");
-
-    printf("Comparação de Cartas:\n");
-
+  
     printf("População: Carta 1 venceu (%d)\n", populacao1 > populacao2);
     printf("Área: Carta 1 venceu (%d)\n", area1 > area2);
     printf("PIB: Carta 1 venceu (%d)\n", pib1 > pib2);
