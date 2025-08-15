@@ -30,7 +30,7 @@ int main(){
     // Entrada de dados carta 01
     printf("=== Cadastro da carta 01 ===\n");
 
-    printf("Digite á sigla do seu Estado(UF): ");
+    printf("Digite a sigla do seu Estado(UF): ");
     scanf(" %2s", estado1);
 
     printf("Digite o codigo da carta (ex: A01): ");
@@ -38,13 +38,18 @@ int main(){
 
     printf("Digite o nome da cidade: ");
     scanf(" %[^\n]", nomeCidade1);
-    getchar();
 
     printf("Digite a população: ");
     scanf("%lu", &populacao1);
+    if (populacao1 == 0) {
+        populacao1 = 1; // evita divisão por zero
+    }
 
     printf("Digite a area (em km²): ");
     scanf("%f", &area1);
+    if (area1 == 0) {
+        area1 = 0.1; // evita divisão por zero
+    }
 
     printf("Digite o PIB: ");
     scanf("%f", &pib1);
@@ -61,16 +66,16 @@ int main(){
     // calcula o inverso da densidade
     inversodadensidade1 = 1.0 / densidade1;
 
-    // Calcula o super poder
-    superpoder1 = (float)populacao1 + area1 + pib1 + (float)pontosTuristicos1 
-    + pibpercapita1 + inversodadensidade1;
+    // Calcula o super poder (normalizando os valores para evitar perda de dados)
+    superpoder1 = (populacao1 / 100000.0) + (area1 / 1000.0) + (pib1 / 1000000.0) + 
+    (pontosTuristicos1 * 10.0) + (pibpercapita1 / 10000.0) + (inversodadensidade1 * 100.0);
 
     printf("\n");// Pula uma linha
 
     // Entrada de dados carta 02
     printf("=== Cadastro da carta 02 ===\n");
 
-    printf("Digite á sigla do seu Estado(UF): ");
+    printf("Digite a sigla do seu Estado(UF): ");
     scanf(" %2s", estado2);
 
     printf("Digite o codigo da carta (ex: B02): ");
@@ -78,13 +83,18 @@ int main(){
 
     printf("Digite o nome da cidade: ");
     scanf(" %[^\n]", nomeCidade2);
-    getchar();
 
     printf("Digite a população: ");
     scanf("%lu", &populacao2);
+    if (populacao2 == 0) {
+        populacao2 = 1; // evita divisão por zero
+    }
 
     printf("Digite a area (em km²): ");
     scanf("%f", &area2);
+    if (area2 == 0) {
+        area2 = 0.1; // evita divisão por zero
+    }
 
     printf("Digite o PIB: ");
     scanf("%f", &pib2);
@@ -101,9 +111,9 @@ int main(){
     // calcula o inverso da densidade
     inversodadensidade2 = 1.0 / densidade2;
 
-    // Calcula o super poder
-    superpoder2 = (float)populacao2 + area2 + pib2 + (float)pontosTuristicos2 
-    + pibpercapita2 + inversodadensidade2;
+    // Calcula o super poder (normalizando os valores para evitar perda de dados)
+    superpoder2 = (populacao2 / 100000.0) + (area2 / 1000.0) + (pib2 / 1000000.0) + 
+    (pontosTuristicos2 * 10.0) + (pibpercapita2 / 10000.0) + (inversodadensidade2 * 100.0);
 
     printf("\n");// Pula uma linha
 
@@ -135,7 +145,7 @@ int main(){
     printf("PIB per Capita: %.2f reais\n", pibpercapita2);
     printf("Super Poder: %.2f\n", superpoder2);
 
-    //exibiçao de comparação 
+    //exibição de comparação 
 
     printf("******* COMPARAÇÃO DAS CARTAS *******\n");
     printf("\n");// Pula uma linha
@@ -237,4 +247,5 @@ int main(){
     }
 
     return 0;
+}
 
